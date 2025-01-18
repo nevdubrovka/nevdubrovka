@@ -6,4 +6,32 @@ body{
 p{
     color: navy;
 }
-    
+.main-navigation{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 285px;
+    background-color: transparent;
+}
+.main-header-logo{
+    order: 2;
+    height: 201px;
+    width: 604px; /*Реалные размеры картинки 604 на 201*/
+}
+.site-navigation{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 0;
+    padding: 0;
+    /*list-style: none;*/
+    /*Времено*/
+    min-height: 65px;
+}
+.container{
+    width: 1024px;
+    margin: auto;
+} 
+footer{
+    display: flex;
+}
