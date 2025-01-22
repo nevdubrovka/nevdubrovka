@@ -1,0 +1,24 @@
+body{
+  background-image: url(img/background2.jpg);
+  background-repeat: no-repeat;
+    background-size: cover;
+  }
+.sheet_head{
+  font-size: 24px;
+  color: navy;
+}
+.subject{
+  font-family: 'Comic Sans MS', 'Cursiv', sans-serif;
+}
+table, th, td
+{
+  border-collapse: collapse;
+  border: 1px solid navy;
+}
+th, td{
+  padding: 10px 20px;
+text-align: center;
+}
+.port{
+  text-align: center;
+}
