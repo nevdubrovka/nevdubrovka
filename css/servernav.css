@@ -197,5 +197,8 @@ div.main-content img{
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 .color{
-    color:red;
+    font-size: 24px;
+    font-weight: bold;
+    color: #f80000;
+    padding: 10px;
 }
