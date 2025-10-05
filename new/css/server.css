@@ -1,0 +1,63 @@
+body{
+    background-image: url(../img/background2.jpg);
+    background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+}
+p{
+    color: navy;
+}
+.main-navigation{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 285px;
+    background-color: transparent;
+}
+.main-header-logo{
+    order: 2;
+    height: 201px;
+    width: 604px; /*Реалные размеры картинки 604 на 201*/
+}
+.site-navigation{
+    display: inline-block;
+    /*justify-content: space-between;
+    align-items: baseline;*/
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    /*Времено*/
+    min-height: 65px;
+}
+.container{
+    width: 1024px;
+    margin: auto;
+    margin-bottom: 70;
+} 
+footer{
+    display: flex;
+
+}
+.footer-logo{
+    width: 75px;
+    height: 75px;
+
+}
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+h2{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-style: italic;
+}
+P{
+     font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+.section-about{
+    display: flex;
+    margin-bottom: 40;
+    
+}
