@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>Невская Дубровка - Музей</title>    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/servernav.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header class="container">
+        <nav class="main-navigation">
+          <a class="main-header-logo" href="index.html">
+            <img src="img/logo.jpg" alt="Логотип Невской Дубровки">
+          </a>
+             <ul class="site-navigation">
+                 <li><a href="index.html">Главная</a></li>
+                 <li><a href="#">Достопримечательности</a>
+                  <ul>
+                    <li><a href="memorial.html">Мемориал</a></li>
+                    <li><a href="attractions.html">Противотанковые надолбы</a></li>
+                    <li><a href="museum.html">Музей</a></li>
+                    <li><a href="park.html">Парк</a></li>
+                    <li><a href="dot.html">ДОТ</a></li>
+                    <li><a href="heroes_of_Metrostroy.html">Героям Метростроя</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Храмы</a>
+                  <ul>
+                    <li><a href="Recovery.html">Храм</a>
+                    <li><a href="clock.html">Часовня</a></li>
+                    <li><a href="victorious.html">Часовня Георгия Победоносца</a></li>
+                  </ul>
+                </li>
+                 <li><a href="info.html">Герои</a></li>
+                 <li><a href="#">Даты</a>
+                    <ul>
+                      <li><a href="begin_war.html">22 июня 1941г.</a></li>
+                      <li><a href="8sen.html">8 сентября 1941г.</a></li>
+                      <li><a href="19jan.html">19 января 1943г.</a></li>
+                      <li><a href="27jan.html">27 января 1944г.</a></li>
+                      <li><a href="9may.html">9 мая 1945г.</a></li>
+                    </ul>
+                    </li>
+                 <li><a href="about_me.html">Обо мне</a></li>
+                 <li><a href="location.html">Как добраться</a></li>
+             </ul>
+         </nav>
+                 <div class="controls">
+            <button id="accessibilityToggle">Версия для слабовидеющих</button>
+            <button id="readAllBtn">Озвучить всю страницу</button>
+            <button id="stopSpeechBtn">Остановить озвучку</button>
+        </div>
+        <div class="controls">
+          <button><a href="../index.html">Обычная версия</a></button>
+          </div>
+         </header>
+  <main class="container">
+<h1>Музей «Невский пятачок»</h1>
+<div class="main-content">
+<img src="img/Nevsky_pyatachok.jpg" alt="This is ">
+<p class="img-description">Торжественное открытие Музея боевой славы в Дубровке состоялось 7 июля 1963 года. В 1999 году все экспонаты были переведены в здание по ул. Ленинградской на 2-й этаж, музей стал называться «Невский пятачок».
+    Музей входит в состав Ленинградского областного государственного бюджетного учреждения культуры «Музейное агентство», которое объединяет 29 музеев Ленинградской области и 397 памятников исторического и культурного наследия.
+    Музей играет важную роль в сохранении памяти войны, в патриотическом воспитании жителей и гостей поселения, ведёт поисковую работу по документам военного времени, участвует в ежегодной «Вахте памяти» по поиску павших воинов.</p>
+</div>
+</main>
+<script>
+        // Переключение режима доступности
+        const toggleBtn = document.getElementById('accessibilityToggle');
+        toggleBtn.addEventListener('click', function() {
+            document.body.classList.toggle('high-contrast');
+            
+            if (document.body.classList.contains('high-contrast')) {
+                this.textContent = 'Обычная версия';
+                localStorage.setItem('accessibilityMode', 'enabled');
+            } else {
+                this.textContent = 'Версия для слабовидеющих';
+                localStorage.setItem('accessibilityMode', 'disabled');
+            }
+        });
+
+        // Проверка сохранённых настроек
+        if (localStorage.getItem('accessibilityMode') === 'enabled') {
+            document.body.classList.add('high-contrast');
+            toggleBtn.textContent = 'Обычная версия';
+        }
+
+        // Озвучка текста
+        let speechSynthesis = window.speechSynthesis;
+        
+        function readText(sectionId) {
+            const section = document.getElementById(sectionId);
+            const text = section.innerText.replace(/Озвучить этот раздел/g, '');
+            
+            // Остановить текущее воспроизведение
+            speechSynthesis.cancel();
+            
+            const utterance = new SpeechSynthesisUtterance();
+            utterance.text = text;
+            utterance.lang = 'ru-RU';
+            utterance.rate = 1.0;
+            
+            speechSynthesis.speak(utterance);
+        }
+
+        // Озвучить всю страницу
+        document.getElementById('readAllBtn').addEventListener('click', function() {
+            const mainContent = document.querySelector('main').innerText
+                .replace(/Озвучить этот раздел/g, '')
+                .replace(/Остановить озвучку/g, '')
+                .replace(/Версия для слабовидеющих/g, '')
+                .replace(/Озвучить всю страницу/g, '');
+            
+            speechSynthesis.cancel();
+            
+            const utterance = new SpeechSynthesisUtterance();
+            utterance.text = mainContent;
+            utterance.lang = 'ru-RU';
+            utterance.rate = 0.9;
+            
+            speechSynthesis.speak(utterance);
+        });
+
+        // Остановить озвучку
+        document.getElementById('stopSpeechBtn').addEventListener('click', function() {
+            speechSynthesis.cancel();
+        });
+
+        // Горячая клавиша Alt+S для остановки озвучки
+        document.addEventListener('keydown', function(e) {
+            if (e.altKey && e.key === 's') {
+                speechSynthesis.cancel();
+            }
+        });
+    </script>
+<footer class="container">
+  <section class="main-content">
+        <img class="footer-flowers" src="img/flowers2.png" alt="Цветы памяти">
+        <p class="poems">
+           "Вы, живые, знайте, что с этой земли 
+            Мы уйти не хотели и не ушли.
+            Мы стояли насмерть у тёмной Невы.
+            Мы погибли, чтоб жили вы."
+                          Роберт Рождественский
+        </p>
+        <img class="footer-logo" src="img/ribbon2.png" alt="Георгиевская лента">
+  </section >
+ </footer>
+</body>
+</html>
